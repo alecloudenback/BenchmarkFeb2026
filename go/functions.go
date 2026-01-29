@@ -32,7 +32,7 @@ func get_per_unit_rates(issue_age int) [120]float64 {
 	var file_rate float64
 
 	// open file
-	file, err := os.Open("../python/unit_load.csv")
+	file, err := os.Open("../data/unit_load.csv")
 	if err != nil {
 		log.Fatal("Error while reading the file", err)
 	}
@@ -78,7 +78,7 @@ func get_coi_rates(gender string, risk_class string, issue_age int) [120]float64
 	var file_rate float64
 
 	// open file
-	file, err := os.Open("../python/coi.csv")
+	file, err := os.Open("../data/coi.csv")
 	if err != nil {
 		log.Fatal("Error while reading the file", err)
 	}
@@ -122,7 +122,7 @@ func get_corridor_factors(issue_age int) [120]float64 {
 	rates := create_rate_array(1.0)
 	var age_col, rate_col int
 
-	file, err := os.Open("../python/corridor_factors.csv")
+	file, err := os.Open("../data/corridor_factors.csv")
 	if err != nil {
 		log.Fatal("Error when opening file", err)
 	}
