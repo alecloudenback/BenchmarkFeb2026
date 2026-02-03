@@ -5,3 +5,7 @@ venv/
 
 # Go
 *.exe
+
+# Rust
+*Cargo.lock
+target/
