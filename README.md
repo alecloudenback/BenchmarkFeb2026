@@ -6,9 +6,17 @@ Each implementation is split into 3 files:
 - parallel: architecture to run multiple cases over multiple workers using a queue or queue-like system
 - main: primary entry point for benchmarking both an illustration simulation and a premium solve simulation
 
+Tested on Python versions 3.14.2, 3.13.11, 3.12.10, 3.11.9
+
+For associated Excel model, download here:
+https://www.carractuarial.com/s/Carr-Actuarial-UL-Illustration-Model-For-Speed-Benchmark.xlsm
+
 ## Python
-Enter "python" subdirectory and run main.py for run time results, e.g.
+Enter "python" subdirectory, create and launch virtual environment, install requirements, and run main.py for run time results, e.g.
 ```
+python -m venv venv
+venv/scripts/activate
+pip install -r requirements.txt
 python main.py
 ```
 Adjust N and W in main.py to adjust cases and # of parallel processes.
