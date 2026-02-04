@@ -68,13 +68,9 @@ func parallel_default_tasks(numWorkers uint8, numJobs uint64, jobType string) (e
 		return errors.New("Invalid jobType provided, must be 'solve' or 'illustrate'"), nil
 	}
 	
-	taskChannel := make(chan Task, numJobs)
+	taskChannel := make(chan Task) //, numJobs)
 	resultChannel := make(chan *Illustration, numJobs)
 	tasks := generate_default_tasks(numJobs)
-
-	for _, task := range tasks {
-		taskChannel <- task
-	}
 
 	for i := 1; i <= int(numWorkers); i++ {
 		if jobType == "illustrate" {
@@ -84,12 +80,16 @@ func parallel_default_tasks(numWorkers uint8, numJobs uint64, jobType string) (e
 		}
 	}
 
+	for _, task := range tasks {
+		taskChannel <- task
+	}
 	close(taskChannel)
 	
 	var illustration *Illustration
 	for i:=1; i<=int(numJobs); i++ {
 		illustration = <- resultChannel
 	}
+	close(resultChannel)
 
 	return nil, illustration
 }
