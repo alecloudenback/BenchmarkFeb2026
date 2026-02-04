@@ -6,6 +6,7 @@ use std::{
 };
 
 const NUM_TASKS: u32 = 1000;
+const NUM_WORKERS: u8 = 8;
 const GENDER: &'static str = "M";
 const RISK_CLASS: &'static str = "NS";
 const ISSUE_AGE: u8 = 35;
@@ -47,7 +48,7 @@ fn benchmark() -> Result<(), Box<dyn Error>> {
     for _i in 0..NUM_TASKS {
         tasks.push(parallel::new_default_task());
     }
-    ill = parallel::parallel(8, "illustrate", tasks);
+    ill = parallel::parallel(NUM_WORKERS, "illustrate", tasks);
     let elapsed = now.elapsed();
     result_printer(PREMIUM, elapsed);
 
@@ -66,7 +67,7 @@ fn benchmark() -> Result<(), Box<dyn Error>> {
     for _i in 0..NUM_TASKS {
         tasks.push(parallel::new_default_task());
     }
-    ill = parallel::parallel(8, "solve", tasks);
+    ill = parallel::parallel(NUM_WORKERS, "solve", tasks);
     let elapsed = now.elapsed();
     result_printer(ill.premium[0], elapsed);
 
