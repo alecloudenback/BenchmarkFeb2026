@@ -1,5 +1,6 @@
 [deps]
 ActuaryUtilities = "bdd23359-8b1c-4f88-b89b-d11982a786f4"
+BenchmarkTools = "6e4b80f9-dd63-53aa-95a3-0cdb28fa8baf"
 CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
 FinanceModels = "77f2ae65-bdde-421f-ae9d-22f1af19dd76"
 MortalityTables = "4780e19d-04b9-53dc-86c2-9e9aa59b5a12"
